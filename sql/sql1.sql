@@ -12,3 +12,6 @@ CREATE TABLE users(
 
 INSERT INTO users VALUES(1,'admin','123');
 INSERT INTO users VALUES(2,'admin','123');
+
+
+ 

@@ -8,7 +8,12 @@
     </settings>
     
      <typeAliases>
+<!--      	别名的配置，如果不配置别名的话，那么需要就需要书写全类名 -->
         <package name="tk.mybatis.simple.model"/>
+<!--         	这种名的写法，会将类映射为简单类名，需要注意不要有重复的类名， -->
+        <package name="com.bdqn.bean"/>
+<!--         	下面的写法是一个个书写 -->
+<!--         <typeAlias type="" alias=""/> -->
     </typeAliases>
 
     <environments default="development">
@@ -27,5 +32,6 @@
 
     <mappers>
         <mapper resource="tk/mybatis/simple/mapper/CountryMapper.xml"/>
+        <mapper resource="com/bdqn/mapper/UserMapper.xml"/>
     </mappers>
 </configuration>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+					"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+					
+<mapper namespace="com.bdqn.dao.UserMapper">
+
+<!-- 	resultMap 用于设置返回值的类型和映射关系 
+		1 id必须填写 ，以此作为被其它地方引用的标识
+		2 type必填 ，用于配置查询列所映射到Java的对象类型
+		3 extends,选填 可以让当前的resultMap继承其它的resultMap 属性的值为
+				其它resultMap的id
+		4 autoMapping 选填，true false
+-->
+	<resultMap id="userMap" type="com.bdqn.bean.SysUser">
+		
+		<id property="id" column="id" />
+		<result property="userName" column="user_name"></result>
+		<result property="userPassword" column="user_password"></result>
+		<result property="userEmail" column="user_email"></result>
+		<result property="userInfo" column="user_info"></result>
+		<result property="headImg" column="head_img" jdbcType="BLOB"></result>
+		<result property="createTime" column="create_time" jdbcType="TIMESTAMP"></result>
+	</resultMap>
+<!-- 	映射查询语句的使用标签，id作为命名空间中的唯一标识符，可以用来代表这条语句，
+		resultMap 赋值为上面的resultMap定义的id通过它就可以知道返回什么数据类型 
+		
+-->
+	<select id="selectById" resultMap="userMap">
+<!-- 		下面是用于从查询的sql语句 #{} 这个预编译参数的一种方式
+	其中id代表了传入参数的名车子
+ -->
+		select * from sys_user where id = #{id}
+	</select>
+	
+</mapper>
+
+
+
+<!-- <mapper namespace="com.bdqn.mapper.UserMapper"> -->
+<!--   	如果有两个mapper文件都是selectAll，会有冲突，书写查询语句的时候就需要命名空间加上id比如com.bdqn.mapper.Usermapper.selectAll    -->
+<!-- 	<select id="selectAll" resultType="User"> -->
+<!-- 		select * from users -->
+<!-- 	</select>  -->
+<!-- 	<select id="selectById" resultType="User"> -->
+<!-- 		select * from users where id = #{id} -->
+<!-- 	</select> -->
+	
+<!-- 	<select id="selectByUsername" resultType="User"> -->
+<!-- 		select * from users where username = #{username} -->
+<!-- 	</select> -->
+<!-- </mapper> -->

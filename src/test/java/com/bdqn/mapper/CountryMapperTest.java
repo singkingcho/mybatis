@@ -1,4 +1,4 @@
-package tk.mybatis.simple.mapper;
+package com.bdqn.mapper;
 
 import java.io.IOException;
 import java.io.Reader;
