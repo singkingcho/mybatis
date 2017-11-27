@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Reader;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
@@ -38,5 +39,13 @@ public class SessionFactoryUtil {
 	
 	public static SqlSessionFactory geteSessionFactory() {
 		return sessionFactory;
+	}
+	
+	public static SqlSession getSession() {
+		if(sessionFactory != null) {
+			return sessionFactory.openSession();
+		}
+		
+		return null;
 	}
 }

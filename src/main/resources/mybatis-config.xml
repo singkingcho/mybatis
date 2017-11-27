@@ -5,6 +5,8 @@
 <configuration>
     <settings>
         <setting name="logImpl" value="LOG4J"/>
+<!--         自动将数据库下划线的命名方式转换为驼峰命名的方式 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
     
      <typeAliases>

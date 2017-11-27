@@ -86,3 +86,9 @@ INSERT INTO `sys_role_privilege` VALUES ('1', '3');
 INSERT INTO `sys_role_privilege` VALUES ('1', '2');
 INSERT INTO `sys_role_privilege` VALUES ('2', '4');
 INSERT INTO `sys_role_privilege` VALUES ('2', '5');
+
+
+-- ----------------------------
+INSERT INTO `sys_user_role` VALUES ('1', '1');
+INSERT INTO `sys_user_role` VALUES ('1', '2');
+INSERT INTO `sys_user_role` VALUES ('1001', '2');
