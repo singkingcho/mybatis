@@ -8,12 +8,10 @@
 <!--         自动将数据库下划线的命名方式转换为驼峰命名的方式 -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
-    
      <typeAliases>
-<!--      	别名的配置，如果不配置别名的话，那么需要就需要书写全类名 -->
-        <package name="tk.mybatis.simple.model"/>
+ 
 <!--         	这种名的写法，会将类映射为简单类名，需要注意不要有重复的类名， -->
-        <package name="com.bdqn.bean"/>
+<!--        <package name="com.bdqn.bean"/-->
 <!--         	下面的写法是一个个书写 -->
 <!--         <typeAlias type="" alias=""/> -->
     </typeAliases>
@@ -33,7 +31,14 @@
     </environments>
 
     <mappers>
-        <mapper resource="tk/mybatis/simple/mapper/CountryMapper.xml"/>
-        <mapper resource="com/bdqn/mapper/UserMapper.xml"/>
+<!--		批量加入  如果想使用这种方式进行一次引入，一定要将resouces下面的包名和对应的接口下面的包名要保持一致
+			否则，你懂的。
+ 		-->
+		<package name="com.bdqn.mapper"></package>   
+<!--	<mapper resource="com/bdqn/mapper/SysUserMapper.xml"></mapper>-->
+    <!--	
+    <mapper resource="tk/mybatis/simple/mapper/CountryMapper.xml"/>
+        <mapper resource="com/bdqn/mapper/UserMapper.xml"/>  	 
+   -->
     </mappers>
 </configuration>
