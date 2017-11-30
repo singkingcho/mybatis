@@ -1,0 +1,18 @@
+1 创建一个maven项目
+
+2 加入mybatis的支持
+
+3 创建数据库和对应的实体类
+
+4 配置mybatis
+	创建一个mybatis.cfg.xml
+	environments
+	和mappers必须配置
+	environments当中至少配置一个environment
+	environment里面至少要配置transactionManager
+	以及DataSource，描述和数据库连接的相关信息
+	mappers用来引入我们后面书写的XML文件
+
+5 创建mapper.xml
+
+6 编写测试类，如果能访问成功，代表mybatis最基础的环境搭建成功
