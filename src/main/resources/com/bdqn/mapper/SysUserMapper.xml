@@ -20,40 +20,6 @@
     <result column="user_info" jdbcType="LONGVARCHAR" property="userInfo" />
     <result column="head_img" jdbcType="LONGVARBINARY" property="headImg" />
   </resultMap>
-  
-  <resultMap id="userRoleMap" type="com.bdqn.bean.SysUser">
-    <id column="id"   property="id" />
-    <result column="user_name"   property="userName" />
-    <result column="user_password"   property="userPassword" />
-    <result column="user_email"  property="userEmail" />
-    <result column="user_info"  property="userInfo" />
-    <result column="head_img"  property="headImg" />
-    <result column="create_time"  property="createTime" jdbcType="TIMESTAMP"/>
-    <result column="role_id"  property="role.id"  />
-    <result column="role_name"  property="role.roleName"  />
-    <result column="enabled"  property="role.enabled"  />
-    <result column="create_by"  property="role.createBy"  />
-    <result column="create_time"  property="role.createTime" jdbcType="TIMESTAMP"  />
-  </resultMap>
-  
-  <resultMap id="userRoleMap3" type="com.bdqn.bean.SysUser" extends="ResultMapWithBLOBs" >
-  	<association property="role" columnPrefix="role_" javaType="com.bdqn.bean.SysRole">
-  		<result property="id"  column="id"/>
-  		<result property="roleName	"  column="role_name"/>
-  		<result property="enabled"  column="enabled"/>
-  		<result property="createBy"  column="create_by"/>
-  		<result property="createTime"  column="create_time" jdbcType="TIMESTAMP"/>
-  	</association>
-  </resultMap>
-  
- 
-  
-  <resultMap id="userRoleMap4" type="com.bdqn.bean.SysUser" extends="ResultMapWithBLOBs" >
-  	<association property="role" columnPrefix="role_" 
-  		    resultMap="com.bdqn.mapper.SysRoleMapper.BaseResultMap">
-  		 
-  	</association>
-  </resultMap>
   <sql id="Base_Column_List">
     <!--
       WARNING - @mbg.generated
@@ -209,6 +175,39 @@
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  <resultMap id="userRoleMap" type="com.bdqn.bean.SysUser">
+    <id column="id" property="id" />
+    <result column="user_name" property="userName" />
+    <result column="user_password" property="userPassword" />
+    <result column="user_email" property="userEmail" />
+    <result column="user_info" property="userInfo" />
+    <result column="head_img" property="headImg" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="role_id" property="role.id" />
+    <result column="role_name" property="role.roleName" />
+    <result column="enabled" property="role.enabled" />
+    <result column="create_by" property="role.createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="role.createTime" />
+  </resultMap>
+  
+  <resultMap extends="ResultMapWithBLOBs" id="userRoleMap3" type="com.bdqn.bean.SysUser">
+  	<association columnPrefix="role_" javaType="com.bdqn.bean.SysRole" property="role">
+  		<result column="id" property="id" />
+  		<result column="role_name" property="roleName " />
+  		<result column="enabled" property="enabled" />
+  		<result column="create_by" property="createBy" />
+  		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  	</association>
+  </resultMap>
+  
+ 
+  
+  <resultMap extends="ResultMapWithBLOBs" id="userRoleMap4" type="com.bdqn.bean.SysUser">
+  	<association columnPrefix="role_" property="role" resultMap="com.bdqn.mapper.SysRoleMapper.BaseResultMap">
+  		 
+  	</association>
+  </resultMap>
   
   <select id="selectUserAndRoleById" resultType="com.bdqn.bean.SysUser">
 <!--  	使用role.xxx role作为前缀进行限定修饰 -->

@@ -47,8 +47,6 @@ public class SysUser {
 	 * @mbg.generated
 	 */
 	private byte[] headImg;
-	
-	 
 
 
 	/**

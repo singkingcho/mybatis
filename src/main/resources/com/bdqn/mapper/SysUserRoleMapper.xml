@@ -40,4 +40,8 @@
       </if>
     </trim>
   </insert>
+  <select id="ceshi">
+  	select * from sys_user
+  </select>
+  
 </mapper>
