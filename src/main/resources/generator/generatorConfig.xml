@@ -2,8 +2,8 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
 <!-- 依赖数据库的驱动	-->
-<!--	<classPathEntry location="D:\opensource\repo\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar"/>-->
-	<classPathEntry location="D:\repo\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar"/>
+	<classPathEntry location="D:\opensource\repo\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar"/>
+<!--	<classPathEntry location="D:\repo\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar"/>-->
     <context id="MySqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
@@ -30,7 +30,16 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.bdqn.mapper"  targetProject="mybatis\src\main\java"/>
 			
 <!--        	防止生成Example文件-->
-        <table tableName="%"  enableCountByExample="false" enableUpdateByExample="false"  
+
+<!--  
+	<table tableName="%"  enableCountByExample="false" enableUpdateByExample="false"  
+	    enableDeleteByExample="false" enableSelectByExample="false"  
+	    selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql"/>
+        </table> 	
+-->
+<!--		单个表生成相应的代码-->
+        <table tableName="user_test"  enableCountByExample="false" enableUpdateByExample="false"  
 	    enableDeleteByExample="false" enableSelectByExample="false"  
 	    selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="MySql"/>

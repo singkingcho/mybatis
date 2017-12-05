@@ -9,6 +9,12 @@
     <id column="team_id" jdbcType="INTEGER" property="teamId" />
     <result column="team_name" jdbcType="VARCHAR" property="teamName" />
   </resultMap>
+  <resultMap id="resultWithPlayers" type="com.bdqn.bean.Team" extends="BaseResultMap">
+  	<collection property="players" ofType="com.bdqn.bean.Player" >
+  		<id column="player_id" property="playerId"></id>
+  		<result column="player_name" property="playerName"></result>
+  	</collection>
+  </resultMap>
   <sql id="Base_Column_List">
     <!--
       WARNING - @mbg.generated
@@ -123,15 +129,16 @@
 	</select>
 	
 <!--  where与if结合使用	-->
-	<select id="selectByTeam" resultType="com.bdqn.bean.Team">
-		select * from team
+	<select id="selectByTeam" resultMap="resultWithPlayers">
+		select t.*,p.*
+		from team t inner join player p on t.team_id = p.team_id
 		<where>
 			1 = 1 
 			<if test="teamId != null">
-				and team_id = #{teamId}				
+				and t.team_id = #{teamId}				
 			</if>
 			<if test="teamName != null">
-				and team_name = #{teamName}				
+				and t.team_name = #{teamName}				
 			</if>
 		</where>
 	</select>

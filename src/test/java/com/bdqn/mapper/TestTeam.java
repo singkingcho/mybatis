@@ -64,4 +64,18 @@ public class TestTeam {
 		session.commit();
 		session.close();
 	}
+	
+	@Test
+	public void m5()  {
+		SqlSession session =  SessionFactoryUtil.getSession();
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		Team t = new Team();
+		t.setTeamId(1);
+		List<Team> list = mapper.selectByTeam(t);
+		for (Team team : list) {
+			System.out.println(team);
+		}
+		session.commit();
+		session.close();
+	}
 }

@@ -39,4 +39,6 @@ public interface PlayerMapper {
 	 * @mbg.generated
 	 */
 	int updateByPrimaryKey(Player record);
+	
+	Player selectByPlayer(Player player);
 }
