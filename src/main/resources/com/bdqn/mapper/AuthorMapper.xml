@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.mapper.AuthorMapper">
+ 	
+	<resultMap id="baseMap" type="com.bdqn.bean.Author">
+		<id column="author_id" property="id"></id>
+		<result column="author_username" property="username"></result>
+		<result column="author_password" property="password"></result>
+	</resultMap>
+	<resultMap id="fullMap" type="com.bdqn.bean.Author" extends="baseMap">
+<!--		<id column="author_id" property="id"></id>-->
+<!--		<result column="author_username" property="username"></result>-->
+<!--		<result column="author_password" property="password"></result>-->
+		<collection property="blogs" ofType="com.bdqn.bean.Blog" >
+			<id column="blog_id" property="id"></id>
+			<result column="blog_title" property="title"></result>
+			<result column="blog_content" property="content"></result>
+			<collection property="comments" ofType="com.bdqn.bean.Comment">
+				<id column="comment_id" property="id"></id>
+				<result column="comment_content" property="content"></result>
+			</collection>
+		</collection>
+	</resultMap>
+	
+	<resultMap id="fullMap2" type="com.bdqn.bean.Author" extends="baseMap">
+<!--		<id column="author_id" property="id"></id>-->
+<!--		<result column="author_username" property="username"></result>-->
+<!--		<result column="author_password" property="password"></result>-->
+		<collection property="blogs" ofType="com.bdqn.bean.Blog" >
+			<id column="blog_id" property="id"></id>
+			<result column="blog_title" property="title"></result>
+			<result column="blog_content" property="content"></result>
+			<collection property="comments" ofType="com.bdqn.bean.Comment" column="blog_id"
+				 resultMap="" >
+<!--
+	 <id column="comment_id" property="id"></id>
+				<result column="comment_content" property="content"></result> 	
+		-->
+			</collection>
+		</collection>
+	</resultMap>
+	 
+	
+	<select id="selectById" resultMap="fullMap2">
+		select  
+			a.id as author_id ,
+			a.username as author_username,
+			a.password as author_password,
+			b.id as blog_id,
+			b.title as blog_title,
+			b.content as blog_content,
+			c.id as comment_id,
+			c.content as comment_content
+		from author a 
+		left join blog b on a.id = b.author_id
+		left join comment c on b.id = c.blog_id
+		where a. id = #{id}
+	</select>
+</mapper>

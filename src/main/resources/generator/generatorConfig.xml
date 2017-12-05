@@ -39,7 +39,7 @@
         </table> 	
 -->
 <!--		单个表生成相应的代码-->
-        <table tableName="user_test"  enableCountByExample="false" enableUpdateByExample="false"  
+        <table tableName="comment"  enableCountByExample="false" enableUpdateByExample="false"  
 	    enableDeleteByExample="false" enableSelectByExample="false"  
 	    selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="MySql"/>

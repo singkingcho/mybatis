@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.mapper.BlogMapper">
+   
+	
+	
+	<select id="selectByBlogId" resultType="com.bdqn.bean.Comment">
+		select 
+			c.id comment_id
+			c.content comment_content 
+		from comment c 
+		where c.blog_id = #{blogId}
+	</select>
+</mapper>
